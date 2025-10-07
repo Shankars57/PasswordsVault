@@ -2,6 +2,10 @@
 
 A modern, secure password manager built with Next.js that keeps your passwords safe using client-side encryption. Your master password never leaves your device, and all encryption/decryption happens in your browser.
 
+## Live URL
+
+- **URL** : https://passwords-vault-7.vercel.app/
+
 ## Features
 
 - **Strong Password Generator**: Create secure passwords with customizable options
