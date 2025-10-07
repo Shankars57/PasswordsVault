@@ -5,17 +5,20 @@ A modern, secure password manager built with Next.js that keeps your passwords s
 ## Features
 
 - **Strong Password Generator**: Create secure passwords with customizable options
+
   - Adjustable length (8-64 characters)
   - Include/exclude uppercase, lowercase, numbers, symbols
   - Exclude similar-looking characters option
 
 - **Secure Vault**: Store your passwords safely
+
   - Client-side AES-GCM encryption
   - Store title, username, password, URL, and notes
   - Search and filter functionality
   - Copy to clipboard with auto-clear after 15 seconds
 
 - **Privacy-First Design**
+
   - Master password is never sent to the server
   - All encryption/decryption happens locally in your browser
   - Server only stores encrypted data
@@ -47,6 +50,7 @@ The app uses the Web Crypto API to implement strong encryption:
 - **IV**: Random 12-byte initialization vector per encryption
 
 **Why this approach?**
+
 - AES-GCM provides authenticated encryption, ensuring data integrity
 - PBKDF2 with high iteration count protects against brute force attacks
 - Unique salts and IVs prevent pattern analysis
@@ -85,6 +89,7 @@ JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-min-32-chars
 ```
 
 **Important**:
+
 - Replace `MONGODB_URI` with your actual MongoDB connection string
 - Generate a strong random `JWT_SECRET` (minimum 32 characters)
 - Never commit the `.env` file to version control
@@ -159,6 +164,42 @@ npm start
    MONGODB_URI=mongodb://localhost:27017/password-vault
    ```
 
+## Sample Data of users and Vault
+
+## users
+
+```
+_id: 68e4eed52a57af4ce4df4d09
+email: "shankarpubg4@gmail.com"
+password: "$2b$10$MJo./8nUJ9sSZukR62ouNueAcg.0mN7ByBPeL38XIQ7oYVI/4LwPa"
+createdAt: 2025-10-07T10:43:33.658+00:00
+
+_id: 68e4f38bd717548aa8e70a93
+email: "bonamgshankar@gmail.com"
+password: "$2b$10$8qlWEFzUdLfgNrW4QYLmuuBJUlqcWFB0yWdCn679zRxoxJNAflvHW"
+createdAt: 2025-10-07T11:03:39.287+00:00
+
+
+```
+
+## vault
+
+```
+
+_id: 68e4ef022a57af4ce4df4d0a
+userId: "68e4eed52a57af4ce4df4d09"
+title: "Sample "
+username: "shankarpubg4@gmail.com"
+url: "http://example.com"
+notes: "Please save it bro"
+encrypted: "tUTHqJAfHAOGLGcVPILYzPxyZeWlJooLjqIacX0daD4fSf4Z5GdsMztiUsaXPyk="
+iv: "wh0dr/XWRe/w8VTk"
+salt: "d74098ce-74b3-4da9-a5c2-3df74958dc0a"
+createdAt: 2025-10-07T10:44:18.389+00:00
+updatedAt: 2025-10-07T10:44:18.389+00:00
+
+```
+
 ## Project Structure
 
 ```
@@ -220,12 +261,14 @@ password-vault/
 ### Other Platforms
 
 The app can be deployed to any platform that supports Node.js:
+
 - Railway
 - Render
 - DigitalOcean App Platform
 - AWS, Google Cloud, Azure
 
 Make sure to:
+
 - Set environment variables
 - Use production MongoDB instance
 - Generate strong JWT secret
@@ -253,21 +296,25 @@ npm run typecheck # Type check TypeScript files
 ### Common Issues
 
 **"Failed to connect to MongoDB"**
+
 - Check your `MONGODB_URI` in `.env`
 - Ensure MongoDB is running
 - Check network/firewall settings
 
 **"Invalid token"**
+
 - JWT secret might have changed
 - Clear cookies and login again
 - Check `JWT_SECRET` in `.env`
 
 **"Decryption failed"**
+
 - Master password is incorrect
 - Data might be corrupted
 - Check browser console for errors
 
 **Build Errors**
+
 - Run `npm install` to ensure all dependencies are installed
 - Delete `.next` folder and rebuild
 - Check Node.js version (18+ required)
@@ -309,6 +356,7 @@ MIT License - feel free to use this project for learning or commercial purposes.
 ## Support
 
 For issues or questions:
+
 - Open an issue on GitHub
 - Check existing documentation
 - Review the code comments
